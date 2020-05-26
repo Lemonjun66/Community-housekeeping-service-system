@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css" />
+<title>已评价订单</title>
+<style type="text/css">
+	        /*背景层*/
+        #popLayer {
+            display: none;
+            background-color: #B3B3B3;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);/* 只支持IE6、7、8、9 */
+        }
+ 
+        /*弹出层*/
+        #popBox {
+            display: none;
+            background-color: #FFFFFF;
+            z-index: 11;
+            width: 500px;
+            height: 200px;
+            position:fixed;
+            top:0;
+            right:0;
+            left:0;
+            bottom:0;
+            margin:auto;
+        }
+ 
+        #popBox .close{
+            text-align: right;
+            margin-right: 5px;
+            background-color: #F8F8F8;
+        }
+ 
+        /*关闭按钮*/
+        #popBox .close a {
+            text-decoration: none;
+            color: #2D2C3B;
+        }
+	</style>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 订单管理 <span class="c-gray en">&gt;</span> 已评价订单 <a class="btn btn-success radius r" style="line-height:1.6em; margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		
+		<span class="r">共有数据：<strong id="count"></strong> 条</span> </div>
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="70">ID</th>
+				<th width="70">服务公司</th>
+				<th width="70">开始时间</th>
+				<th width="70">服务类型</th>
+				<th width="70">评分</th>
+				
+			</tr>
+		</thead>
+		<tbody id="ypjdd">
+
+		</tbody>
+	</table>
+	</div>
+	<div style="position: absolute; bottom:10%; left:80%; float:left;">
+		<button type="button" class="btn btn-success radius" id="Previous">上一页</button>
+		<span id="currentPage"></span>
+		<button type="button" class="btn btn-success radius" id="Next">下一页</button> 
+	</div>
+	
+	<div id="popLayer"></div>
+				<div class="modal-dialog">
+				<div id="popBox" class="modal-content">
+				<!-- 这里点击评分去评分 com.xy.ctl OrderCtl.java score -->
+				<form class="form-horizontal" action="/order/score">
+				<div class="modal-header">
+					<h3 style="text-align: center;">对此订单进行评分</h3>
+				</div>
+				<div class="modal-body">
+				<div class="form-group" style="margin-top: 30px; ">
+					<label style="margin-left: 20px; margin-right: 25px; font-size: 20px;"><input name="score" type="radio" value="1" checked/>1分</label> 
+					<label style="margin-left: 20px; margin-right: 25px; font-size: 20px;"><input name="score" type="radio" value="2" />2分</label> 
+					<label style="margin-left: 20px; margin-right: 25px; font-size: 20px;"><input name="score" type="radio" value="3" />3分</label> 
+					<label style="margin-left: 20px; margin-right: 25px; font-size: 20px;"><input name="score" type="radio" value="4" />4分</label> 
+					<label style="margin-left: 20px; margin-right: 25px; font-size: 20px;"><input name="score" type="radio" value="5" />5分</label>
+				</div>
+				<input type="hidden" name="demo" class="demo" id="demo" value="">
+				</div>
+					<div class="modal-footer" style="margin-top: 0px; ">
+						<input style="margin-left: 90px;" class="btn btn-primary" type="submit" name="popBox" value="确定">
+						<input style="margin-left: 50px;" class="btn btn-primary" type="button" name="close" onclick="closeBox()" value="关闭">
+					</div>
+					</form>
+				</div>
+			</div>
+	
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="/js/manager_list.js"></script>
+<script type="text/javascript" src="/js/people/ypjdd.js"></script> 
+</body>
+</html>

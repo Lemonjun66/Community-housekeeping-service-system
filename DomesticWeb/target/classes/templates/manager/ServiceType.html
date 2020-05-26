@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<title>服务管理</title>
+<style type="text/css">
+	        /*背景层*/
+        #popLayer {
+            display: none;
+            background-color: #B3B3B3;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);/* 只支持IE6、7、8、9 */
+        }
+ 
+        /*弹出层*/
+        #popBox {
+            display: none;
+            background-color: #FFFFFF;
+            z-index: 11;
+            width: 500px;
+            height: 200px;
+            position:fixed;
+            top:0;
+            right:0;
+            left:0;
+            bottom:0;
+            margin:auto;
+        }
+ 
+        #popBox .close{
+            text-align: right;
+            margin-right: 5px;
+            background-color: #F8F8F8;
+        }
+ 
+        /*关闭按钮*/
+        #popBox .close a {
+            text-decoration: none;
+            color: #2D2C3B;
+        }
+	</style>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 其他管理 <span class="c-gray en">&gt;</span> 服务管理 
+<a class="btn btn-success radius r" style="line-height:1.6em; margin-bottom:13px;" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a>
+<!-- 点击右上角添加服务，有onclick="popBox1();"，去ServiceType.js下找popBox1 -->
+<a class="btn btn-success radius r" style="margin-bottom:3px; margin-right:30px;" onclick="popBox1();" title="添加服务">添加服务</a>
+</nav>
+	<div class="cl pd-5 bg-1 bk-gray mt-20">
+		
+		<span class="r">共有数据：<strong id="count"></strong> 条</span> </div>
+	<div class="mt-20">
+	<table class="table table-border table-bordered table-hover table-bg table-sort">
+		<thead>
+			<tr class="text-c">
+				<th width="25"><input type="checkbox" name="" value=""></th>
+				<th width="70">ID</th>
+				<th width="70">服务名称</th>
+				<th width="70">操作</th>
+			</tr>
+		</thead>
+		<tbody id="ServiceType">
+
+		</tbody>
+	</table>
+	</div>
+	<div style="position: absolute; bottom:10%; left:80%; float:left;">
+		<button type="button" class="btn btn-success radius" id="Previous">上一页</button>
+		<span id="currentPage"></span>
+		<button type="button" class="btn btn-success radius" id="Next">下一页</button> 
+	</div>
+	
+	
+		<div id="popLayer"></div>
+				<div class="modal-dialog">
+				<div id="popBox" class="modal-content">
+				<!-- 填写添加服务文字，去ctl包下ServiceTypeCtl.java找save -->
+				<form class="form-horizontal" action="/serviceType/save">
+				<div class="modal-header">
+					<h3 style="text-align: center;">添加服务</h3>
+				</div>
+				<div class="modal-body">
+				<div class="input-group">
+  					<span class="input-group-addon" id="basic-addon1">服务名称</span>
+  					<!-- input是打开的添加服务窗口的文字  -->
+  					<input type="text" class="form-control" id="theService" name="theService" placeholder="请填写服务名称" style="width: 360px;">
+				</div>
+				
+				<input type="submit" class="form-control" value="保存" style="width:20%; margin-left:350px; margin-top:20px;">
+				</div>
+				</form>
+				</div>
+			</div>
+	
+	
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="/js/manager_list.js"></script>
+<!-- 这里引入了ServiceType.js，里面有一个加载页面就请求的方法，请求获取 -->
+<script type="text/javascript" src="/js/manager/ServiceType.js"></script>  
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+<title>下订单</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 订单管理 <span class="c-gray en">&gt;</span> 下订单 <a class="btn btn-success radius r" style="line-height:1.6em; margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	<!-- com.xy.ctl OrderCtl.java saveInfo -->
+	<form class="form-horizontal" autocomplete="off" action="/order/saveInfo">
+	<div class="mt-20">
+			<div Style="margin-left:50px;">
+				
+				<div class="input-group" Style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1">服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务</span>
+  <select class="form-control" id="serviceType" name="serviceType" style="width: 800px;">
+						</select>
+						
+</div>
+
+<div class="input-group" Style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1">公&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;司</span>
+  <select class="form-control" id="company" name="company" style="width: 800px;">
+						</select>
+						
+</div>
+
+<div class="input-group" style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1" >开始日期</span>
+  <!-- type="date" 类型是date日期 Bootstrap框架更好看 -->
+  <input type="date" class="form-control" id="date" name="date" style="width: 340px;">
+  <span class="input-group-addon" id="basic-addon1" >具体时间</span>
+  <input type="time" class="form-control" id="time" name="time" style="width: 340px;">
+</div>
+
+<div class="input-group" style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1" >结束日期</span>
+  <input type="date" class="form-control" id="date1" name="date1" style="width: 340px;">
+  <span class="input-group-addon" id="basic-addon1" >具体时间</span>
+  <input type="time" class="form-control" id="time1" name="time1" style="width: 340px;">
+</div>
+
+
+<div class="input-group" Style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1">联&nbsp;&nbsp;系&nbsp;&nbsp;人</span>
+  <input type="text" class="form-control" id="people" name="people" placeholder="请填写联系人" style="width: 800px;">
+</div>
+
+<div class="input-group" Style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1">联系电话</span>
+  <input type="number" class="form-control" id="phone" name="phone" placeholder="请填写电话" style="width: 800px;">
+</div>
+
+<div class="input-group" Style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1">联系方式</span>
+  <input type="text" class="form-control" id="wechat" name="wechat" placeholder="请填写QQ或微信" style="width: 800px;">
+</div>
+
+<div class="input-group" Style="margin-top:30px;">
+  <span class="input-group-addon" id="basic-addon1">服务内容</span>
+  <input type="text" class="form-control" id="content" name="content" placeholder="请填写具体工作内容" style="width: 800px;">
+</div>
+
+</div>	
+				    
+	</div>
+	<div style="position: absolute; bottom: 5%; left: 60%; float: left;">
+		 <input type="submit" class="form-control" value="提交订单">
+	</div>
+	</form>
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
+	<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script>
+	<!--/_footer 作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+	<script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="/js/manager_list.js"></script>
+	<!-- 这里引入了xdd.js，里面有一个加载页面就请求的方法，请求获取 -->
+	<script type="text/javascript" src="/js/people/xdd.js"></script>
+</body>
+</html>

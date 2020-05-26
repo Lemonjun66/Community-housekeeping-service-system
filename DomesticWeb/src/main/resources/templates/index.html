@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>社区家政服务系统</title>
+<link href="/css/login.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+<link href="/css/demo.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="/js/jquery1.42.min.js"></script>
+<script type="text/javascript" src="/js/jquery.SuperSlide.js"></script>
+<script type="text/javascript" src="/js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="/js/home.js"></script>
+  
+<script>
+$(function(){
+
+$(".i-text").focus(function(){
+$(this).addClass('h-light');
+});<!--这块没用-->
+
+$(".i-text").focusout(function(){
+$(this).removeClass('h-light');
+});<!--这块没用-->
+
+$("#username6").focus(function(){
+ var username = $(this).val();
+ if(username=='输入用户名'){
+ $(this).val('');
+ }
+});
+<!--让username=输入的用户名，当鼠标聚焦在用户名下面的方框，如果没输入就离开聚焦，再次聚焦，那么此时用户名下面的方框中显示'输入用户名'将被清除-->
+
+$("#username6").focusout(function(){
+ var username = $(this).val();
+ if(username==''){
+ $(this).val('输入用户名');
+ }
+});
+<!--让username=输入的用户名，当鼠标聚焦在用户名下面的方框，如果没输入就离开聚焦，那么此时用户名下面的方框显示'输入用户名'，-->
+
+$("#password6").focus(function(){
+ var username = $(this).val();
+ if(username=='输入密码'){
+ $(this).val('');
+ }
+});
+
+
+$("#yzm").focus(function(){
+ var username = $(this).val();
+ if(username=='输入验证码'){
+ $(this).val('');
+ }
+});
+
+$("#yzm").focusout(function(){
+ var username = $(this).val();
+ if(username==''){
+ $(this).val('输入验证码');
+ }
+});
+
+
+});
+
+
+
+
+</script>
+
+
+</head>
+
+<body>
+
+
+<div class="header">
+  <!--target没用 alt没用 href="javascript:;" 表示什么都不执行" title="社区家政服务系统"指鼠标悬停显示字-->
+  <h1 class="headerLogo"><a title="社区家政服务系统" target="_blank" href="javascript:;"><img alt="logo" src="/img/logo.png"></a></h1>
+	<div class="headerNav">
+	</div>
+</div>
+
+<div class="banner">
+
+<div class="login-aside">
+  <div id="o-box-up"></div>
+  <div id="o-box-down"  style="table-layout:fixed;">
+   <div class="error-box"></div><!--这块没用-->
+   
+   <!--onsubmit指点击就去找js方法loginCheck(),在home.js方法下，如果onsubmit返回的是true，就会触发action，去找后端ctl包下LoginCtl.java下的登录方法-->
+   <form class="registerform" method="post" action="/login/login" onsubmit="return loginCheck()">
+   <div class="fm-item">
+	   <label for="logonId" class="form-label">用户名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="msg1"></span></label>
+	   <input type="text" name="username" placeholder="请输入用户名" value="" maxlength="100" id="username6" class="i-text" ajaxurl="demo/valid.jsp"  datatype="s6-18" nullmsg="请输入用户名！" errormsg="用户名至少6个字符,最多18个字符！"  >    
+       <!-- -->
+       <div class="ui-form-explain"></div>
+  </div>
+  
+  <div class="fm-item">
+	   <label for="logonId" class="form-label">密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="msg2"></span></label>
+	   <input type="password" name="password" placeholder="请输入密码" value="" maxlength="100" id="password6" class="i-text" datatype="*6-16" nullmsg="请输入密码！" errormsg="密码范围在6~16位之间！">    
+       <div class="ui-form-explain"></div>
+  </div>
+  
+  <div class="fm-item pos-r">
+	   <label for="logonId" class="form-label">验证码：<span class="msg3"></span></label>
+	   <input type="text" name="verifyCode" value="输入验证码" maxlength="100" id="yzm" class="i-text yzm" nullmsg="请输入验证码！" >    
+       <!-- 去com.xy.ctl LoginCtl.java checkCode找生成验证码方法 -->
+       <div class="ui-form-explain"><img src="/login/checkCode" alt="" width="100" height="32" class="yzm-img" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'" /></div>
+       <!--cursor:pointer指光标是一只手-->
+  </div>
+  
+  <!-- 登录按钮 -->
+  <div class="fm-item">
+	   <label for="logonId" class="form-label"></label>
+	   <!-- input里面登录按钮图标在css/login.css下的btn-login样式里的背景图 -->
+	   <input type="submit" value="" tabindex="4" id="send-btn" class="btn-login"> 
+	   <!-- 注册按钮 -->
+	   <!-- a里面注册按钮图标在css/login.css下的btn-register样式里的背景图 -->
+	   <a href="/login/register"><input type="button" value="" tabindex="4" id="send-btn1" class="btn-register"></a>
+       <div class="ui-form-explain"></div>
+  </div>
+  
+  </form>
+  
+  </div>
+
+</div>
+
+	<div class="bd">
+		<ul>
+			<!-- 背景图 -->
+			<li style="background:url(/themes/beijing.jpg) #CCE1F3 center 0 no-repeat;"><a target="_blank" href="javascript:;"></a></li>
+		</ul>
+	</div>
+
+</div>
+<script type="text/javascript">jQuery(".banner").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click" });</script>
+
+
+<div class="banner-shadow"></div>
+
+<div class="footer">
+   
+</div>
+
+</body>
+</html>
